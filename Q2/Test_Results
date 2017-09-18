@@ -1,0 +1,66 @@
+(Q2.Test0) SELECT COUNT (*) FROM RESULT; —- should give a number
+ count 
+-------
+    50
+(1 row)
+
+(Q2.Test1) SELECT coursePass(5000, COMP205, 2014, A-, 2014-07-01); -- wrong student
+psql:/home/berceadrag/Desktop/swen304_a3_q2_test.txt:5: ERROR:  ERROR : No such Student exists
+(Q2.Test2) SELECT coursePass(5003, SWEN205, 2014, A-, 2014-07-01); -- wrong course
+psql:/home/berceadrag/Desktop/swen304_a3_q2_test.txt:8: ERROR:  ERROR : No such Course exists
+(Q2.Test3) SELECT coursePass(5003, COMP202, 2014, B+, 2014-07-01); -- duplicate
+psql:/home/berceadrag/Desktop/swen304_a3_q2_test.txt:11: ERROR:  ERROR : Duplicate records are not permitted in the result table
+(Q2.Test4) SELECT coursePass(5003, COMP103, 2014, B-, 2014-07-01); -- now pass grade, was fail
+ coursepass 
+------------
+ 
+(1 row)
+
+(Q2.Test4) SELECT pointsEarned FROM STUDENT WHERE sId = 5003; -- should return 150
+ pointsearned 
+--------------
+          150
+(1 row)
+
+(Q2.Test5) SELECT coursePass(5003, ENGR101, 2014, A, 2014-07-01); -- now pass grade, was also pass
+ coursepass 
+------------
+ 
+(1 row)
+
+(Q2.Test5) SELECT pointsEarned FROM STUDENT WHERE sId = 5003; -- should still return 150
+ pointsearned 
+--------------
+          150
+(1 row)
+
+(Q2.Test6) SELECT coursePass(5003, MATH114, 2014, D, 2014-07-01); -- now fail grade, was pass
+ coursepass 
+------------
+ 
+(1 row)
+
+(Q2.Test6) SELECT pointsEarned FROM STUDENT WHERE sId = 5003; -- should still return 150
+ pointsearned 
+--------------
+          150
+(1 row)
+
+(Q2.Test7) SELECT coursePass(6006, COMP311, 2014, A+, 2014-07-01);
+ coursepass 
+------------
+ 
+(1 row)
+
+(Q2.Test7) SELECT pointsEarned FROM STUDENT WHERE sId = 6006;
+ pointsearned 
+--------------
+          375
+(1 row)
+
+(Q2.Test8) SELECT * FROM GRADUATE;
+ sid  | graduationdate 
+------+----------------
+ 7007 | 2013-11-30
+ 6006 | 2014-07-01
+(2 rows)
