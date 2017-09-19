@@ -1,0 +1,8 @@
+Student Id's were inncorrectly written on the exam, this would lead to a foreign key violation;
+inserting an unknown/incorrect student id into the results table would mean that the record would 
+not refernce any student record.  
+
+Course Id's do not refer to any course that currently exists in the course table => foreign key violation.
+
+A student may have already passed the course, but completed it twice, with manuall checking, it may be easy to miss such 
+a scenario and award the student the same number of points again, when this shouldn't be done. If this happens with many students, it would be very time consuming to write all the appropriate updates, to correct the students point total (might even have to check the graduate table, and remove them from it, if they are in it and were awarded twice the points for the same course)
