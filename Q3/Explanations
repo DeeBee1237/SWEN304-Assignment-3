@@ -1,0 +1,27 @@
+ROLE:
+-----
+
+A Role is an entity that contains Database privileges. A role can be though of as either one or multiple database users.
+For instance a role could be given to a user
+with a password by CREATE USER usrname WITH PASSWORD passwrd;
+
+
+ROLE_BASED ACCESS CONTROL:
+--------------------------
+
+PUBLIC:
+-------
+
+A Public Role means all roles. As in, Priviledges should be given to all roles
+including those that may be created in the future.
+
+GRANT:
+------
+
+Grant is used to specify which privileges should be given to a Role. So you can grant a user all privileges 
+on a database, and you would do so with something like: GRANT ALL ON dbname postgresvtdb TO nameofrole;
+Or you can grant a user/role the privilege of granting/revoking database membership to others by using 
+WITH ADMIN OPTION.
+
+REVOKE:
+-------
