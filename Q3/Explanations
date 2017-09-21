@@ -1,3 +1,10 @@
+QUESTION 3:
+-----------
+
+================================================================================================================
+
+Part (a):
+
 ROLE:
 -----
 
@@ -9,11 +16,12 @@ with a password by CREATE USER usrname WITH PASSWORD passwrd;
 ROLE_BASED ACCESS CONTROL:
 --------------------------
 
+Is a way of controlling which users of the database server, have which rights (i.e what they can/can't access and view etc.) It ensures that users of the database do not have access to things they should not be able to view. In a business context (as a rough example) this might mean restricting confidential data from someone who is a tester, and only allowing Developers or DBA's to view the data 
+
 PUBLIC:
 -------
 
-A Public Role means all roles. As in, Priviledges should be given to all roles
-including those that may be created in the future.
+PUBLIC refers to the implicitly defined group of ALL roles.
 
 GRANT:
 ------
@@ -25,3 +33,39 @@ WITH ADMIN OPTION.
 
 REVOKE:
 -------
+
+Revoke is a command used to revoke previously granted priviledges from one or several roles. For
+REVOKE from PUBLIC means revoke previously granted priviledges from ALL roles, however if a user has a priviledge granted to them directly or via another role, that user will not lose the respective priviledge. 
+
+================================================================================================================
+
+Part (b):
+
+* GRANT CONNECT ON DATABASE <your_database_name> TO PUBLIC; 
+
+PUBLIC refers to the group of ALL roles in the database, i.e all of the Database users.
+This Query is therefore used to grant all database users the "priviledge" of connecting to/accessing your database.
+
+*GRANT SELECT, INSERT, DELETE, UPDATE ON MAJOR, STUDENT,
+COURSE, RESULT, GRADUATE TO PUBLIC; 
+
+This Query is used to grant all users(roles) of the database the priviledges to perform the opperations
+SELECT, INSERT, DELETE, UPDATE, on the tables MAJOR, STUDENT, COURSE, RESULT, GRADUATE, in your Database.
+
+================================================================================================================
+
+
+Part (c):
+
+* What happens if the RESULT table is missing in the SQL command in part b
+
+Then all users/roles of the database would not be able to perform SELECT, INSERT, DELETE or UPDATE queries on the 
+RESULT table. I.E they would be unable to view,add or modify data in the RESULT table.
+
+Part (d):
+
+* What happens if the UPDATE operation is missing in the SQL command in part b)? 
+
+Then all users/roles would only be able to perform SELECT, INSERT and DELETE queries on the tables : MAJOR, STUDENT, COURSE, RESULT and  GRADUATE. I.E they would be unable to update any records in any of the specified tables.
+
+
