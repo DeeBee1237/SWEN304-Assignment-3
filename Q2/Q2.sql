@@ -1,5 +1,3 @@
--- populating:
-\i ~/Desktop/swen304_a3_q2.sql 
 
 CREATE FUNCTION coursePass (In_sId int, In_cId char, In_year int, In_grade
 char, In_graduationDate date) RETURNS VOID AS $$
@@ -44,31 +42,3 @@ END IF;
 
 END;
 $$ LANGUAGE PLpgSQL;
-
-
-
-
--- testing:
-
-\i ~/Desktop/swen304_a3_q2_test.txt 
-
--- shows the number of times a course (ENGR 101) was passed: 
-select count(*) from result where sid = 5003 AND cid = 'COMP103' AND grade < 'D';
-
-
-DROP TABLE course;
-DROP TABLE graduate;
-DROP TABLE major;
-DROP TABLE result;
-DROP TABLE student;
-
-DROP TABLE course;
-DROP TABLE major;
-
-
-DROP FUNCTION coursePass (In_sId int, In_cId char, In_year int, In_grade
-char, In_graduationDate date);
-
-
-
-
